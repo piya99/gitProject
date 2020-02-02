@@ -1,0 +1,39 @@
+<button mat-button (click)="goSearch()" style="margin-bottom: 10px;"> < </button>
+<div *ngIf="user">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 col-lg-4">
+                <div class="card">
+                <a class="btn btn-default btn-block" target="_blank" href="{{user.html_url}}">
+                    <img src="{{user.avatar_url}}" alt="Avatar" style="width:100%"></a>
+                <div class="container">
+                    <h4><b>{{user.name}}</b></h4>
+                    <p><strong>Username: </strong>{{user.login}}</p>
+                    <p><strong>Location: </strong>{{user.location}}</p>
+                </div>
+                </div>
+            </div>
+        </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">User Repos</h3>
+    </div>
+    <div class="panel-body">
+      <div *ngFor="let repo of repos | slice: 0: 5">
+        <div class="row">
+          <div class="col-md-9">
+            <h4><a target="_blank" href="{{repo.html_url}}">{{repo.name}}</a></h4> <a class="hover"
+              (click)="readmeFun(repo.name)"> Readme </a>
+            <p>{{repo.description}}</p>
+          </div>
+          <div class="col-md-3">
+            <span class="label label-default">{{repo.watchers}} Watchers</span>
+            <span class="label label-primary">{{repo.forks}} Forks</span>
+            <span class="label label-primary">{{repo.stargazers_count}} Stars</span>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
